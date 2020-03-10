@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Notes App</title>
+        <link href="/images/favicon.png" rel="icon">
+        <link href="/styles/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <h1 class="header__title">Notes App</h1>
+                <h2 class="header__subtitle">Take notes and never forget</h2>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="actions__container actions__container--spaced">
+                <span id="last-edited" data-test="notesApp_lastEdited"></span>
+            </div>
+        </div>
+        <div class="container">
+            <select id="category" class="title-input" data-test="notesApp_selectCategory">
+                <option value="work" data-test="notesApp_selectCategory_work">Work</option>
+                <option value="home" data-test="notesApp_selectCategory_home">Home</option>
+                <option value="other" data-test="notesApp_selectCategory_other">Other</option>
+            </select>
+            <input id="note-title" class="title-input" placeholder="Note title" data-test="notesApp_noteTitle">
+            <textarea id="note-body" class="body-input" placeholder="Enter note text" data-test="notesApp_noteBody"></textarea>
+            <button id="remove-note" class="button button--secondary" data-test="notesApp_buttonRemove">Remove note</button>
+            <a href="/index.html">
+                <button id="done-note" class="button button--secondary" data-test="notesApp_buttonDone" style="background-color: yellowgreen; border-bottom: 2px solid powderblue;">Update  note</button>
+            </a>
+        </div>
+
+        <script src="/scripts/edit-bundle.js"></script>
+    </body>
+</html>

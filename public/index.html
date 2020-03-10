@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Notes App</title>
+        <link href="/images/favicon.png" rel="icon">
+        <link href="/styles/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <h1 class="header__title">Notes App</h1>
+                <h2 class="header__subtitle">Take notes and never forget</h2>
+            </div>
+        </header>
+        <div class="actions">
+            <div class="actions__container">
+                <input id="search-text" type="text" class="input" placeholder="Filter notes" data-test="notesApp_filterInput">
+                <select id="filter-by" class="dropdown" data-test="notesApp_filterSelect">
+                    <option value="byEdited" data-test="notesApp_filterSelect_edited">Sort by last edited</option>
+                    <option value="byCreated" data-test="notesApp_filterSelect_created">Sort by recently created</option>
+                    <option value="alphabetical" data-test="notesApp_filterSelect_alphabet">Sort alphabetically</option>
+                </select>
+            </div>
+        </div>
+        <div class="container">
+            <div class="button_wrapper" id='add_info' style="width: 99%; margin-bottom: 3%; margin-top: 2%;">
+                <button id="create-note" class="button" data-test="notesApp_createButton">Create Note</button>
+                <button id="delete-notes" class="delete_button" data-test="notesApp_deleteButton">Delete notes</button>
+                <p id='note_counter' data-test="notesApp_noteCounter"></p>
+            </div>
+            <div class="container_section">
+                <h1>Work</h1>
+                <div id="notes_work" data-test="notesApp_workSection"></div>
+            </div>
+            <div class="container_section">
+                <h1>Home</h1>
+                <div id="notes_home" data-test="notesApp_homeSection"></div>
+            </div>    
+            <div class="container_section">
+                <h1>Other</h1>
+                <div id="notes_other" data-test="notesApp_otherSection"></div>
+            </div>    
+        </div>
+        <script src="/scripts/index-bundle.js"></script>
+    </body>
+</html>
