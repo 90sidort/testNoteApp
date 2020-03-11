@@ -32,6 +32,20 @@ document.querySelector('#filter-by').addEventListener('change', (e) => {
     renderNotes()
 })
 
+document.querySelector('#high-priority').addEventListener('change', (e) => {
+    if (document.querySelector('#high-priority').checked === true) {
+        setFilters({
+            sortBy: 'priority'
+        })        
+    } else {
+        setFilters({
+            sortBy: 'byEdited'
+        })
+        document.querySelector('#filter-by').value = 'byEdited'
+    }
+    renderNotes()
+})
+
 window.addEventListener('storage', (e) => {
     if (e.key === 'notes') {
         renderNotes()

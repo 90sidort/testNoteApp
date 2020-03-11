@@ -82,6 +82,8 @@ const sortNotes = (sortBy) => {
                 return 0
             }
         })
+    } else if (sortBy === 'priority') {
+        return notes.filter((note) => note.priority === true)
     } else {
         return notes
     }
