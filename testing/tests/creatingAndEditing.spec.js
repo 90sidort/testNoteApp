@@ -57,7 +57,7 @@ const counterStrings = [oneNoteCounter, twoNoteCounter, threeNoteCounter, fourNo
 
 
 fixture `testCafe demo tests- saving and deleting notes`
-    .page `http://localhost:8082/`;
+    .page `http://localhost:8080/`;
 test('When no notes, all categories should display empty message, no counter', async t => {
     await t.maximizeWindow();
     for (let emptyField of emptyFields){
