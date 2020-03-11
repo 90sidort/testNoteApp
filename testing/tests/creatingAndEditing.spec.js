@@ -38,7 +38,11 @@ import {
     fourNoteCounter,
     changedNoteString,
     editNoteString,
-    unnamedNoteString
+    unnamedNoteString,
+    prioritizeBttn,
+    stringUnprioritize,
+    stringPrioritize,
+    singleOther
 } from '../support/variables';
 import {
     setLocalStore,
@@ -53,7 +57,7 @@ const counterStrings = [oneNoteCounter, twoNoteCounter, threeNoteCounter, fourNo
 
 
 fixture `testCafe demo tests- saving and deleting notes`
-    .page `http://localhost:8080/`;
+    .page `http://localhost:8082/`;
 test('When no notes, all categories should display empty message, no counter', async t => {
     await t.maximizeWindow();
     for (let emptyField of emptyFields){
@@ -224,5 +228,51 @@ test('It shoudl be possible to add note with title only', async t => {
     await t.click(updateButton);
     await t.expect(itemLink.exists).ok({ timeout: timeWait });
     await t.expect(itemTitle.innerText).contains('1');
+    await t.expect(notesCounter.innerText).eql(oneNoteCounter);
+});
+test('It should be possible to create new high priority note, counter should be updated', async t => {
+    await t.maximizeWindow();
+    await t.click(buttonCreate);
+    await t.expect(noteTitle.exists).ok({ timeout: timeWait });
+    await t.typeText(noteTitle, test1String);
+    await t.wait(typeWait);
+    await t.typeText(noteBody, test1_1String);
+    await t.wait(typeWait);
+    await t.click(prioritizeBttn);
+    await t.expect(prioritizeBttn.innerText).eql(stringUnprioritize);
+    await t.click(updateButton);
+    await t.expect(itemLink.exists).ok({ timeout: timeWait });
+    await t.expect(itemTitle.innerText).contains('1');
+    await t.expect(itemLink.getStyleProperty("background-color")).eql('rgb(255, 0, 0)');
+    await t.expect(notesCounter.innerText).eql(oneNoteCounter);
+});
+test('Should be able to mark existing note as high priority, counter should not change', async t => {
+    await t.maximizeWindow();
+    await setLocalStore(singleWork);
+    await t.eval(() => location.reload(true));
+    await t.expect(itemLink.exists).ok({ timeout: timeWait });
+    await t.click(itemLink);
+    await t.expect(prioritizeBttn.exists).ok({ timeout: timeWait });
+    await t.click(prioritizeBttn);
+    await t.expect(prioritizeBttn.innerText).eql(stringUnprioritize);
+    await t.wait(typeWait);
+    await t.click(updateButton);
+    await t.expect(itemLink.exists).ok({ timeout: timeWait });
+    await t.expect(itemLink.getStyleProperty("background-color")).eql('rgb(255, 0, 0)');
+    await t.expect(notesCounter.innerText).eql(oneNoteCounter);
+});
+test('Should be able to mark existing note as normal priority, counter should not change', async t => {
+    await t.maximizeWindow();
+    await setLocalStore(singleOther);
+    await t.eval(() => location.reload(true));
+    await t.expect(itemLink.exists).ok({ timeout: timeWait });
+    await t.click(itemLink);
+    await t.expect(prioritizeBttn.exists).ok({ timeout: timeWait });
+    await t.click(prioritizeBttn);
+    await t.expect(prioritizeBttn.innerText).eql(stringPrioritize);
+    await t.wait(typeWait);
+    await t.click(updateButton);
+    await t.expect(itemLink.exists).ok({ timeout: timeWait });
+    await t.expect(itemLink.getStyleProperty("background-color")).eql('rgb(247, 247, 247)');
     await t.expect(notesCounter.innerText).eql(oneNoteCounter);
 });

@@ -44,6 +44,7 @@ export const updateButton = Selector('button[data-test="notesApp_buttonDone"]');
 export const emptyWorkMess = Selector('p[data-test="notesApp_emptyWork"]');
 export const emptyHomeMess = Selector('p[data-test="notesApp_emptyHome"]');
 export const emptyOtherMess = Selector('p[data-test="notesApp_emptyOther"]');
+export const prioritizeBttn = Selector('button[data-test="notesApp_buttonPriority"]');
 
 // Text:
 export const test1String = 'Test1';
@@ -73,6 +74,8 @@ export const stringTestYOther = 'TestYOther';
 export const stringTestAWork = 'TestAWork';
 export const nineNoteCounter = 'You currently have 9 notes.';
 export const sortedByCreated = 'byCreated';
+export const stringUnprioritize = 'Unprioritize';
+export const stringPrioritize = 'Prioritize';
 
 // Other:
 export const timeWait = 30000;
