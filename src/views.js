@@ -39,6 +39,11 @@ const generateNoteDOM = (note) => {
     } else {
         textEl.textContent = 'Unnamed note'
     }
+    if (note.priority === true){
+        noteEl.setAttribute('style', 'background-color:red; display:block; word-wrap:break-word; width:98%')
+    } else {
+        noteEl.setAttribute('style', 'display:block; word-wrap:break-word; width:98%')
+    }
     textEl.classList.add('list-item__title')
     textEl.setAttribute('data-test', 'notesApp_itemTitle')
     noteEl.appendChild(textEl)
@@ -52,7 +57,6 @@ const generateNoteDOM = (note) => {
     statusEl.textContent = generateLastEdited(note.updatedAt)
     statusEl.classList.add('list-item__subtitle')
     statusEl.setAttribute('data-test', 'notesApp_itemUpdate')
-    noteEl.setAttribute('style', 'display:block; word-wrap:break-word; width:98%')
     noteEl.appendChild(statusEl)
 
     return noteEl

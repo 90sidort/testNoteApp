@@ -30,6 +30,7 @@ const createNote = () => {
         id: id,
         title: '',
         body: '',
+        priority: false,
         createdAt: timestamp,
         updatedAt: timestamp,
         category: 'work'
@@ -86,6 +87,39 @@ const sortNotes = (sortBy) => {
     }
 }
 
+const updatePriority = (id) => {
+    const note = notes.find((note) => note.id === id)
+    const prioritizeElement = document.querySelector('#priority-note')
+    if (note.priority === false) { 
+        note.priority = true
+        prioritizeElement.setAttribute('style', 'background-color: blue; border-bottom: 2px solid navy;')
+        prioritizeElement.innerText = 'Unprioritize'
+    } else {
+        note.priority = false
+        prioritizeElement.setAttribute('style', 'background-color: red; border-bottom: 2px solid orangered;')
+        prioritizeElement.innerText = 'Prioritize'
+    }
+    note.updatedAt = moment().valueOf()
+    saveNotes()
+    return note
+}
+
+const buttonPriority = (id) => {
+    const createButton = document.createElement('button')
+    createButton.setAttribute('id', 'priority-note')
+    createButton.setAttribute('class', 'button button--secondary')
+    createButton.setAttribute('data-test', 'notesApp_buttonPriority')
+    const note = notes.find((note) => note.id === id)
+    if (note.priority === false){
+        createButton.setAttribute('style', 'background-color: red; border-bottom: 2px solid orangered;')
+        createButton.innerText = 'Prioritize'
+    } else {
+        createButton.setAttribute('style', 'background-color: blue; border-bottom: 2px solid navy;')
+        createButton.innerText = 'Unprioritize'
+    }
+    return createButton
+}
+
 const updateNote = (id, updates) => {
     const note = notes.find((note) => note.id === id)
 
@@ -114,4 +148,4 @@ const updateNote = (id, updates) => {
 
 notes = loadNotes()
 
-export { getNotes, createNote, removeNote, sortNotes, updateNote }
+export { getNotes, createNote, removeNote, sortNotes, updateNote, updatePriority, buttonPriority }

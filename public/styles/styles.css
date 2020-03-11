@@ -150,6 +150,7 @@ a {
 .button--secondary {
     background: #888888;
     border-bottom: 2px solid #717171;
+    width: 20%;
 }
 
 .button--secondary:hover {

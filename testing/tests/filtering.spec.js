@@ -76,7 +76,7 @@ test('Editing notes should change sorting (filter last edited selected)', async 
     await t.expect(itemLink.nth(3).innerText).contains(stringTestEHome);
     await t.expect(itemLink.nth(6).innerText).contains(stringTestYOther);
 });
-test('Filterin by text should be possible', async t => {
+test('Filtering by text should be possible', async t => {
     await t.maximizeWindow();
     await setLocalStore(filteringSet);
     await t.eval(() => location.reload(true));
