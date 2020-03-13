@@ -45,6 +45,7 @@ export const emptyWorkMess = Selector('p[data-test="notesApp_emptyWork"]');
 export const emptyHomeMess = Selector('p[data-test="notesApp_emptyHome"]');
 export const emptyOtherMess = Selector('p[data-test="notesApp_emptyOther"]');
 export const prioritizeBttn = Selector('button[data-test="notesApp_buttonPriority"]');
+export const priorityCheckbox = Selector('input[name="priority-only"]');
 
 // Text:
 export const test1String = 'Test1';

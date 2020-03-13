@@ -14,10 +14,19 @@ export const singleHomeMock = [
         "id": "e2e6bb4f-f870-4dd0-a93f-84eb73abd93c",
         "title": "Test1",
         "body": "Test1_1",
-        "priority": false,
+        "priority": true,
         "createdAt": 1583668335621,
         "updatedAt": 1583668343975,
         "category": "home"
+    },
+    {
+        "id": "e1e6bb4f-f870-4dd0-a93f-84eb73abd93c",
+        "title": "Test2",
+        "body": "Test2_2",
+        "priority": false,
+        "createdAt": 1583668335620,
+        "updatedAt": 1583668343973,
+        "category": "other"
     }
 ];
 export const singleOtherMock = [

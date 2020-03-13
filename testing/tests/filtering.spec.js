@@ -19,7 +19,9 @@ import {
     stringTestEHome,
     stringTestYOther,
     timeWait,
-    filterInput
+    filterInput,
+    priorityCheckbox,
+    singleHome
 } from '../support/variables';
 import {
     setLocalStore,
@@ -84,4 +86,17 @@ test('Filtering by text should be possible', async t => {
     await t.typeText(filterInput, stringTestAWork);
     await t.expect(itemLink.nth(0).innerText).contains(stringTestAWork);
     await t.expect(itemLink.nth(1).exists).notOk();
+});
+test('It should be possible to filter notes by priority', async t => {
+    await t.maximizeWindow();
+    await setLocalStore(singleHome);
+    await t.eval(() => location.reload(true));
+    await t.expect(itemLink.nth(0).getStyleProperty("background-color")).eql('rgb(255, 0, 0)');
+    await t.expect(itemLink.nth(1).getStyleProperty("background-color")).eql('rgb(247, 247, 247)');
+    await t.click(priorityCheckbox);
+    await t.expect(itemLink.nth(0).exists).ok();
+    await t.expect(itemLink.nth(1).exists).notOk();
+    await t.click(priorityCheckbox);
+    await t.expect(itemLink.nth(0).exists).ok();
+    await t.expect(itemLink.nth(1).exists).ok();
 });
